@@ -1,0 +1,51 @@
+.svgBtn {
+	background-color: transparent;
+	background-color: rgba(128, 128, 128, 0.089);
+	border: none;
+	border-radius: 50%;
+	padding: 0.25rem;
+	cursor: pointer;
+	position: relative;
+	transition: all 0.2s ease-in-out;
+
+	&:hover {
+		background-color: rgba(128, 128, 128, 0.185);
+	}
+
+	svg {
+		height: 28px;
+		width: auto;
+	}
+
+	span {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background-color: red;
+		position: absolute;
+		top: 0px;
+		right: -0px;
+		font-size: 10px;
+	}
+
+	/* 
+    bildirim sayisi varsa: 
+    span {
+        padding: 0.0125rem;
+        width: 12px;
+        height: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        border-radius: 50%;
+        background-color: red;
+        color: #fff;
+        position: absolute;
+        top: 0px;
+        right: -0px;
+        font-size: 10px;
+        text-align: center;
+    }
+    */
+}
