@@ -1,6 +1,5 @@
-// @ts-nocheck
+import Navbar from 'components/navbar/Navbar'
 import { Outlet } from 'react-router-dom'
-import Navbar from '../navbar/Navbar'
 
 
 const Layout = () => {
@@ -10,7 +9,7 @@ const Layout = () => {
             <Outlet />
             <footer className='footer'>
                 <div className="container">
-                    <h5>Footer</h5>
+                    <h5>Freelance Market</h5>
                 </div>
             </footer>
         </div>

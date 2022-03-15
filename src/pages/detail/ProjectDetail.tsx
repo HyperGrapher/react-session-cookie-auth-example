@@ -1,5 +1,4 @@
-// @ts-nocheck
-import Page from "../../components/_reusables/Page"
+import Page from 'components/_reusables/Page'
 
 const ProjectDetail = () => {
     return (

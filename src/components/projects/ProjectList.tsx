@@ -1,11 +1,11 @@
-// @ts-nocheck
 import ProjectCard from "./ProjectCard"
 
+const malist = ["1", "2", "3"]
 const InstaList = () => {
     return (
         <ul>
-            {["p1", "p2", "p3"].map(val => <ProjectCard key={val} slug={val} />)}
-
+            {malist.map(val => <ProjectCard key={val} slug={val} />)}
+            
         </ul>
     )
 }

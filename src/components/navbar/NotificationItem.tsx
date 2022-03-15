@@ -1,4 +1,4 @@
-import prof from '../../images/ben.jpg'
+import prof from 'images/ben.jpg'
 
 
 type PROPS = {

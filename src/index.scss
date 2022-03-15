@@ -1,6 +1,12 @@
+body {
+	// font-family: "Mulish", sans-serif !important; body text icin uygun
+	font-family: "Roboto", sans-serif !important;
+	overflow-x: hidden;
+}
 .clr {
 	color: rgba(236, 0, 0, 0.801);
 }
+
 
 .footer {
 	height: 20vh;
@@ -49,8 +55,13 @@ button.btn {
 	border-radius: 0.5rem;
 }
 .landing-page {
-	// margin-top: 58px;
-	height: calc(100vh - 58px);
+	.header-content {
+		height: calc(100vh - 58px);
+	}
+	.landing-img {
+		width: auto;
+		height: 100%;
+	}
 }
 .landing-page h1 {
 	font-weight: 700;

@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'
-import useNavbarMenuStore, { ProjectNavType } from '../../stores/menu.store';
-import { IcBell, IcCollab, IcLogout, IcMessage, IcSettings } from '../icons';
-import IconBtn from '../_reusables/IconBtn';
+import { IcBell, IcCollab, IcLogout, IcMessage, IcSettings } from 'components/icons';
+import useNavbarMenuStore, { ProjectNavType } from 'stores/menu.store';
+import IconBtn from 'components/_reusables/IconBtn';
 import NotificationItem from './NotificationItem';
+import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react';
 
 
 type PROPS = {
@@ -18,13 +18,13 @@ const NotificationMenu: React.FC<PROPS> = ({ onClickMenu }) => {
     const setMenu = useNavbarMenuStore(val => val.setMenu)
 
     useEffect(() => {
-
-
+        
     }, [])
 
 
 
     const onNavigate = (path: string) => {
+        setMenu(undefined)
         onClickMenu('notification')
         navigate(path);
     }

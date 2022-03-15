@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { ReactChild } from "react";
 
 type Props = {

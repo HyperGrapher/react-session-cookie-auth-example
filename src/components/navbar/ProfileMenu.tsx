@@ -1,17 +1,17 @@
-// @ts-nocheck
-import { useNavigate } from 'react-router-dom'
-import { useTransition } from 'transition-hook';
-import userImg from '../../images/irem_profile.jpeg'
-import useNavbarMenuStore, { ProjectNavType } from '../../stores/menu.store';
 import { IcCollab, IcLogout, IcMessage, IcPerson, IcSettings } from '../icons';
+import useNavbarMenuStore, { ProjectNavType } from 'stores/menu.store';
+import { useTransition } from 'transition-hook';
+import { useNavigate } from 'react-router-dom'
+import userImg from 'images/ben.jpg'
+
 
 type PROPS = {
     onClickMenu: (val: ProjectNavType) => void;
     onLogout: () => void;
-
 }
-const ProfileMenu: React.FC<PROPS> = ({ onClickMenu, onLogout }) => {
+// https://github.com/iamyoki/transition-hook
 
+const ProfileMenu: React.FC<PROPS> = ({ onClickMenu, onLogout }) => {
 
     const navigate = useNavigate();
 
@@ -46,8 +46,8 @@ const ProfileMenu: React.FC<PROPS> = ({ onClickMenu, onLogout }) => {
                 shouldMount ? (<>
                     <div style={{
                         transition: '.15s',
-                        transformOrigin: "top left",
-                        transform: stage === "leave" ? "scaleY(0.75) translateY(-1.5rem)" : "scaleY(1)",
+                        //   transformOrigin: "top left",
+                        //   transform: stage === "leave" ? "scaleY(0.75) translateY(-1.5rem)" : "scaleY(1)",
                         opacity: stage === 'enter' ? 1 : 0
                     }} className="navbar-menu-list fade-in-slide-up">
                         <ul className="list-group text-dark">
@@ -66,3 +66,23 @@ const ProfileMenu: React.FC<PROPS> = ({ onClickMenu, onLogout }) => {
 }
 
 export default ProfileMenu
+
+
+/*
+
+    const [state, setstate] = useState(false)
+
+    const navigate = useNavigate();
+    const menu = useNavbarMenuStore(val => val.menu)
+
+    useEffect(() => {
+        if(menu === "profile") setstate(true)
+        else setstate(false)
+    }, [menu])
+
+    const onNavigate = (path: string) => {
+        // TODO: close menu 
+        navigate(path);
+    }
+
+*/

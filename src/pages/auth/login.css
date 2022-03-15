@@ -1,0 +1,81 @@
+.overlay {
+	background-color: rgba(117, 117, 117, 0.25);
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-content: center;
+}
+.field {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+.form-error {
+	color: red;
+	position: absolute;
+	bottom: -20px;
+	font-size: 12px;
+}
+
+.loader {
+	height: 100vh;
+	width: 100vw;
+	opacity: 1;
+	transition: opacity 0.35s;
+	background-color: rgb(238, 238, 238);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	z-index: 99999999999;
+	top: 0;
+	right: 0;
+	left: 0;
+}
+.loader h5 {
+	color: rgb(30, 92, 226);
+}
+.loader.fadeout {
+	opacity: 0;
+}
+.cent {
+	width: 15vw;
+	height: 15vw; /* background-color: rgb(39, 39, 39); box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.lds-ripple {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 80px;
+}
+.lds-ripple div {
+	position: absolute;
+	border: 4px solid rgb(30, 92, 226);
+	opacity: 1;
+	border-radius: 50%;
+	animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+	animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+	0% {
+		top: 36px;
+		left: 36px;
+		width: 0;
+		height: 0;
+		opacity: 1;
+	}
+	100% {
+		top: 0px;
+		left: 0px;
+		width: 72px;
+		height: 72px;
+		opacity: 0;
+	}
+}

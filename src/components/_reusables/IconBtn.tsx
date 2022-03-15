@@ -1,4 +1,3 @@
-// @ts-nocheck
 import sty from './style.module.scss'
 
 type PROPS = {
