@@ -1,55 +1,54 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { FieldWrapper, FieldError } from './style/Styled';
+import Ripple from 'components/ripple-loader/Ripple';
 import { authService } from 'services/auth.service';
 import { notifyError } from 'utils/notifications';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
-import Page from 'components/_reusables/Page';
-import Button from '@mui/material/Button';
 import { useForm } from "react-hook-form";
+import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
-import './login.css'
 
-type IFormData = {
+interface ILoginFormData {
     email: string;
     password: string;
 };
 
-
 const Login: React.FC = () => {
 
     const navigate = useNavigate()
-    const { register, handleSubmit, watch, formState: { errors } } = useForm<IFormData>();
+    const { register, handleSubmit, watch, formState: { errors } } = useForm<ILoginFormData>();
 
     const [busy, setBusy] = useState(false);
 
-    async function go(credentials: IFormData) {
+    async function go(credentials: ILoginFormData) {
         const response = await authService.login(credentials);
         if (response) navigate('/projeler', { replace: true })
         else notifyError('Hatali kullanici ismi veya parola');
     }
 
-    const handleFormSubmit = async (credentials: IFormData) => {
+    const handleFormSubmit = async (credentials: ILoginFormData) => {
         setBusy(true)
         // Simulate network latency
-        setTimeout(() => {
-            go(credentials)
-        }, 1500);
+        setTimeout(() => setBusy(false), 1500);
         try {
+            setTimeout(() => {
+                go(credentials)
+            }, 1500);
 
         } catch (err) {
             console.log(err);
         } finally {
-            setTimeout(() => setBusy(false), 1500);
         }
 
     };
 
     return (
-        <Page>
+        <div>
             <form onSubmit={handleSubmit(handleFormSubmit)}>
                 <Box
                     component="div"
@@ -57,15 +56,14 @@ const Login: React.FC = () => {
                         '& > :not(style)': { width: '45ch' },
                         display: 'grid',
                         placeContent: 'center',
-                        height: 'calc(80vh - 57px)',
-
+                        height: 'calc(80vh - var(--navbar-height))',
                     }}
                 >
                     <Paper variant="outlined">
 
                         <Stack spacing={4} direction="column" sx={{ p: 8, }}>
                             <Typography sx={{ fontSize: '1rem' }} textAlign="center" variant='h6'>Devam etmek için giriş yapınız</Typography>
-                            <div className="field">
+                            <FieldWrapper>
                                 <TextField
                                     id="email"
                                     size='medium'
@@ -73,8 +71,8 @@ const Login: React.FC = () => {
                                     variant="outlined"
                                     {...register("email", { required: true })}
                                 />
-                                {errors.email && <span className="form-error">Email adresinizi giriniz</span>}</div>
-                            <div className="field">
+                                {errors.email && <FieldError>Email adresinizi giriniz</FieldError>}</FieldWrapper>
+                            <FieldWrapper>
                                 <TextField
                                     id="password"
                                     label="Parola"
@@ -82,28 +80,21 @@ const Login: React.FC = () => {
                                     autoComplete="current-password"
                                     {...register("password", { required: true, minLength: 6 })}
                                 />
-                                {errors.password && <span className="form-error">Parolanız minimum 6 karakter olmalı</span>}
-                            </div>
+                                {errors.password && <FieldError>Parolanız minimum 6 karakter olmalı</FieldError>}
+                            </FieldWrapper>
 
                             <Button disabled={busy} type='submit' variant="contained">Giriş Yap</Button>
                         </Stack>
 
-                        {busy && <div className="overlay">
-                            <div className="cent">
-                                <div className="lds-ripple">
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                        </div>}
+                        {busy && <Ripple />}
+
                     </Paper>
                 </Box>
             </form>
-        </Page>
+        </div>
     )
 }
 
 export default Login
 
 // onChange={(event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value)}
-// onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPass(event.target.value)}

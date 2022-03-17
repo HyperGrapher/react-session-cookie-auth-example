@@ -1,20 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import AnimatedPage from 'components/_reusables/AnimatedPage';
-import ProjectDetail from 'pages/detail/ProjectDetail';
+import PageWrapper from 'components/page/PageWrapper';
+import ProjectDetail from 'pages/project-detail/ProjectDetail';
 import { authService } from 'services/auth.service';
 import { Route, Routes } from 'react-router-dom';
 import Projects from 'pages/projects/Projects';
-import Layout from 'components/layout/Layout';
+import RootContainer from 'components/root/Root';
 import useAuthStore from 'stores/auth.store';
 import Landing from 'pages/landing/Landing';
-import { Toaster } from 'react-hot-toast';
 import Login from 'pages/auth/Login';
 import { useEffect } from 'react';
+import Profile from 'pages/profile/Profile';
+import Unauthorized from 'pages/unauthorized/Unauthorized';
+import RequireAuth from 'components/auth-required/RequireAuth';
 
 
 const App: React.FC = () => {
 
-  useEffect(() => console.log(''));
+  useEffect(() => console.log('📢 App render'));
 
   const setAuth = useAuthStore(store => store.setAuth)
   const setUser = useAuthStore(store => store.setUser)
@@ -33,21 +35,19 @@ const App: React.FC = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<AnimatedPage><Landing /></AnimatedPage>} />
-          <Route path="login" element={<AnimatedPage><Login /></AnimatedPage>} />
+        <Route path="/" element={<RootContainer />}>
+          <Route index element={<PageWrapper><Landing /></PageWrapper>} />
+          <Route path="login" element={<PageWrapper><Login /></PageWrapper>} />
+          <Route path="unauthorized" element={<PageWrapper><Unauthorized /></PageWrapper>} />
           <Route path="projeler">
-            <Route index element={<AnimatedPage><Projects /></AnimatedPage>} />
-            <Route path='detay' element={<AnimatedPage><ProjectDetail /></AnimatedPage>} />
+            <Route index element={<PageWrapper><Projects /></PageWrapper>} />
+            <Route path='detay' element={<PageWrapper><ProjectDetail /></PageWrapper>} />
+          </Route>
+          <Route element={<RequireAuth />}>
+            <Route path="profile" element={<PageWrapper><Profile /></PageWrapper>} />
           </Route>
         </Route>
       </Routes>
-      <Toaster containerStyle={{
-        top: 60,
-        left: 20,
-        bottom: 20,
-        right: 20,
-      }} />
     </>
   );
 }

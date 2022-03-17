@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import useNavbarMenuStore, { ProjectNavType } from 'stores/menu.store'
 import { authService } from 'services/auth.service'
 import NotificationMenu from './NotificationMenu'
@@ -7,11 +8,19 @@ import { Link } from 'react-router-dom'
 import ProfileMenu from './ProfileMenu'
 import { IcPlusSmall } from '../icons'
 import Logo from 'images/logo.png'
+import { useEffect } from 'react'
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
+
+    useEffect(() => console.log('📢 Navbar render'));
+
+    // ! useNavigate causes navbar and its children
+    // ! to re-render on every route change
+    // const navigate = useNavigate();
 
     const isAuth = useAuthStore(state => state.isAuth)
     const onLogOut = () => authService.logout()
+
 
     const setNavbarDropdownMenu = useNavbarMenuStore(val => val.setMenu)
     const menu = useNavbarMenuStore(val => val.menu)
@@ -34,10 +43,7 @@ const Navbar = () => {
         }
     }
 
-
-    // TODO: fixed-top navbar
     // TODO: Menu linklerini ayri componentlere bol: orta nav links, login-logout, usermenus
-    // navbar navbar-expand-md navbar-dark fixed-top bg-dark
     return (
         <nav className='navbar navbar-expand-lg navbar-light bg-light fixed-top navy'>
             <div className='container '>
@@ -48,7 +54,7 @@ const Navbar = () => {
                 {/* IpadPro ve ustunde Gosterir */}
                 <MediaQuery minWidth={1024}>
                     <div className='navbar-middle-links'>
-                        <Link onClick={() => setNavbarDropdownMenu(undefined)} to="projeler"
+                        <Link onClick={() => setNavbarDropdownMenu(undefined)} to="/"
                             className="d-inline nav-link ms-2">
                             <strong className='text-muted'>Uzman Ara</strong>
                         </Link>
@@ -56,7 +62,7 @@ const Navbar = () => {
                             className="d-inline nav-link ms-2">
                             <strong className='text-muted'>Projeler</strong>
                         </Link>
-                        <Link onClick={() => setNavbarDropdownMenu(undefined)} to="projeler"
+                        <Link onClick={() => setNavbarDropdownMenu(undefined)} to="profile"
                             className="d-inline nav-link ms-2">
                             <strong className='text-muted'>Yardim</strong>
                         </Link>
@@ -82,7 +88,6 @@ const Navbar = () => {
                                     <strong className='text-muted'>Giriş</strong>
                                 </Link>
                             </>)
-
                         }
                     </div>
                 </MediaQuery>

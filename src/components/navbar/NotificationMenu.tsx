@@ -3,8 +3,6 @@ import useNavbarMenuStore, { ProjectNavType } from 'stores/menu.store';
 import IconBtn from 'components/_reusables/IconBtn';
 import NotificationItem from './NotificationItem';
 import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react';
-
 
 type PROPS = {
     onClickMenu: (val: ProjectNavType) => void;
@@ -12,16 +10,13 @@ type PROPS = {
 
 const NotificationMenu: React.FC<PROPS> = ({ onClickMenu }) => {
 
+    // useEffect(() => console.log('📢 NotificationMenu render'));
+
+    // ! useNavigate causes re-render on every route change
     const navigate = useNavigate();
 
     const menu = useNavbarMenuStore(val => val.menu)
     const setMenu = useNavbarMenuStore(val => val.setMenu)
-
-    useEffect(() => {
-        
-    }, [])
-
-
 
     const onNavigate = (path: string) => {
         setMenu(undefined)
@@ -33,8 +28,6 @@ const NotificationMenu: React.FC<PROPS> = ({ onClickMenu }) => {
         <div className='navbar-menu-parent d-inline '>
 
             <IconBtn notificationAlert={true} onClick={() => onClickMenu('notification')}><IcBell /></IconBtn>
-
-
             {
                 menu === "notification" ? (<>
                     <div className="navbar-menu-list fade-in-slide-up">

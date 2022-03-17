@@ -1,14 +1,12 @@
 import ProjectList from "components/projects/ProjectList";
 import useAuthStore from 'stores/auth.store'
 
-
-
-const Projects = () => {
+const Projects: React.FC = () => {
 
     const isAuth = useAuthStore(state => state.isAuth)
 
     return (
-        <main className="container pt-5 height-overflow">
+        <main className="Projects container">
             <div className="row">
                 <div className="col-sm-3">
                     <div className="">
@@ -22,25 +20,9 @@ const Projects = () => {
                     <ProjectList />
                 </div>
 
-
             </div>
         </main>
     )
 }
 
 export default Projects
-
-
-/*
-
-            <Button onClick={() => setToast(val => !val)} className="mb-2">
-                Toggle Toast <strong>with</strong> Animation
-            </Button>
-
-            <ToastNotification
-                show={toast}
-                title=""
-                body=""
-                onClose={() => setToast(false)} />
-
-*/

@@ -7,20 +7,14 @@ body {
 	color: rgba(236, 0, 0, 0.801);
 }
 
-
-.footer {
-	height: 20vh;
-	background-color: rgb(37, 37, 37);
-	color: rgb(192, 189, 189);
-	z-index: 9;
-	position: relative;
+.protected-test {
+	background-color: rgb(184, 187, 199);
+	color: rgb(54, 58, 82);
 }
 
-.page {
-	min-height: calc(80vh - 58px); // footer is 20vh - navbar is 58px
-}
 :root {
 	// https://youtu.be/WIwYgvwn00g
+	--navbar-height: 58px;
 	--ease-in-out-expo: cubic-bezier(1, 0, 0, 1); // exponential ease like gsap expo
 	--shadow-color: 230deg 20% 70%;
 	--shadow-elevation-low: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
@@ -36,10 +30,6 @@ body {
 		11.2px 22.3px 28.1px -1.8px hsl(var(--shadow-color) / 0.34),
 		17px 33.9px 42.7px -2.1px hsl(var(--shadow-color) / 0.34),
 		25px 50px 62.9px -2.5px hsl(var(--shadow-color) / 0.34);
-}
-
-.layout {
-	margin-top: 58px;
 }
 
 a > svg,
@@ -135,19 +125,14 @@ p.lead {
 	height: 107vh;
 }
 
-.fade-in {
-	animation: fadein 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	// animation: fadein 0.45s linear;
-}
-
 .fade-in-slide-up {
-	animation: fadein 0.25s linear, slideup 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	animation: fadein 0.25s linear, slideup 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 	z-index: 99;
 }
 
 @keyframes fadein {
 	from {
-		opacity: 0.15;
+		opacity: 0.01;
 	}
 	to {
 		opacity: 1;
@@ -156,7 +141,7 @@ p.lead {
 
 @keyframes slideup {
 	from {
-		transform: translateY(0.15rem);
+		transform: translateY(0.5rem);
 	}
 	to {
 		transform: translateY(0);

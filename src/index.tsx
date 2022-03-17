@@ -7,17 +7,12 @@ import App from './App';
 import "./bs-config.scss"
 import './index.scss';
 
-// #loader elementi auth check yapildiktan sonra da kaldirilabilir. 
+// #loader auth check yapildiktan sonra da kaldirilabilir. 
 document.addEventListener('readystatechange', (event: any) => {
 
-  
   // When window loaded ( external resources are loaded too- `css`,`src`, etc...) 
   if (event.target.readyState === "complete") {
-    
-    // When HTML/DOM elements are ready:
-    if (event.target.readyState === "interactive") {   //does same as:  ..addEventListener("DOMContentLoaded"..
-      console.log("Interactive");
-    }
+
     const loader: any = document.querySelector(".loader");
     setTimeout(() => {
       loader.classList.add("fadeout");

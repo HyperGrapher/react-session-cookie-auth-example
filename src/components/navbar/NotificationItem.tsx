@@ -1,6 +1,5 @@
 import prof from 'images/ben.jpg'
 
-
 type PROPS = {
     onClick?: () => void;
     name?: string;
