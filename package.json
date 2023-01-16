@@ -23,7 +23,7 @@
     "react-responsive": "^9.0.0",
     "react-router-dom": "^6.5.0",
     "react-scripts": "5.0.1",
-    "react-select": "^5.5.1",
+    "react-select": "^5.7.0",
     "rxjs": "^7.6.0",
     "sass": "^1.57.1",
     "transition-hook": "^1.5.2",
