@@ -60,7 +60,7 @@
     "@types/node": "^20.14.0",
     "@types/react": "^17.0.40",
     "@types/react-dom": "^17.0.13",
-    "@axe-core/react": "^4.6.1",
+    "@axe-core/react": "^4.9.1",
     "@types/d3-ease": "^3.0.2",
     "@types/lodash": "^4.17.4",
     "@types/react-router-dom": "^5.3.3",
