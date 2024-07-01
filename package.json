@@ -29,7 +29,7 @@
     "transition-hook": "^1.5.2",
     "typescript": "^5.4.5",
     "web-vitals": "^3.1.1",
-    "zustand": "^4.3.7"
+    "zustand": "^4.5.4"
   },
   "scripts": {
     "start": "react-scripts start",
