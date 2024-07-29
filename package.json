@@ -28,7 +28,7 @@
     "sass": "^1.77.2",
     "transition-hook": "^1.5.2",
     "typescript": "^5.4.5",
-    "web-vitals": "^3.1.1",
+    "web-vitals": "^4.2.2",
     "zustand": "^4.5.4"
   },
   "scripts": {
